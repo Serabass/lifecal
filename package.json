@@ -1,0 +1,16 @@
+{
+  "name": "lifecalendar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Serabass <serabass565@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@angular/cli": "^8.3.2",
+    "lerna": "^3.16.4"
+  },
+  "scripts": {
+    "start": "lerna run start --stream --parallel",
+    "build": "lerna run build --stream --parallel"
+  }
+}
