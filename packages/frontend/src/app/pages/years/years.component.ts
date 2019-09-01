@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
 import * as moment from 'moment';
 
 export interface Point2D {
@@ -18,6 +18,9 @@ export class YearsComponent implements OnInit {
 
   private ctx: CanvasRenderingContext2D;
 
+  private RECT_SIZE = 40;
+  private PADDING = 0;
+
   @Input()
   public width = 900;
 
@@ -32,10 +35,11 @@ export class YearsComponent implements OnInit {
 
   private yearOffset = 0;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
-    this.ctx =  this.canvas.nativeElement.getContext('2d');
+    this.ctx = this.canvas.nativeElement.getContext('2d');
     this.year = moment().year();
 
     requestAnimationFrame(() => this.draw());
@@ -45,34 +49,64 @@ export class YearsComponent implements OnInit {
     this.ctx.fillStyle = 'white';
     this.ctx.fillRect(0, 0, this.width, this.height);
 
-    let year = this.year - 5 + this.yearOffset;
+    const offsetX = 30;
+    const offsetY = 30;
 
-    const offsetX = 70;
+    for (let y = 1; y < 10; y++) {
+      let year = this.year - 50;
+      let firstDecadeYear = year - (year % 10) + (this.yearOffset);
+      let currentYear = firstDecadeYear + y * 10;
+      this.ctx.font = '20px Arial';
+
+      let isCurrentDecade = firstDecadeYear + y * 10 === this.year - (this.year % 10);
+
+      let yy = y * this.RECT_SIZE + offsetY;
+      if (isCurrentDecade) {
+        this.ctx.fillStyle = 'red';
+        this.ctx.fillText(currentYear.toString(), 0, yy);
+      } else {
+        this.ctx.fillStyle = 'black';
+        this.ctx.fillText(currentYear.toString(), 0, yy);
+      }
+    }
+
     for (let x = 1; x <= 9; x++) {
       for (let y = 1; y <= 9; y++) {
-        this.ctx.strokeStyle = 'black';
+        this.ctx.fillStyle = 'white';
+        this.ctx.strokeStyle = 'white';
+        let xx = offsetX + x * this.RECT_SIZE + this.PADDING;
+        let yy = y * this.RECT_SIZE + this.PADDING;
+        let year = this.year - 50;
+        let firstDecadeYear = year - (year % 10) + (this.yearOffset);
+        let isCurrentYear = firstDecadeYear + x === this.year;
+        let hovered = this.hoverPoint.x > xx && this.hoverPoint.x < xx + this.RECT_SIZE
+          && this.hoverPoint.y > yy && this.hoverPoint.y < yy + this.RECT_SIZE;
 
-        this.ctx.strokeRect(offsetX + x * 50, y * 50, 40, 40);
+        if (hovered || isCurrentYear) {
+          this.ctx.fillStyle = 'black';
+          this.ctx.fillRect(offsetX + x * this.RECT_SIZE + this.PADDING,
+            y * this.RECT_SIZE + this.PADDING,
+            this.RECT_SIZE,
+            this.RECT_SIZE);
+        } else {
+          this.ctx.strokeStyle = 'black';
+          this.ctx.strokeRect(offsetX + x * this.RECT_SIZE + this.PADDING,
+            y * this.RECT_SIZE + this.PADDING,
+            this.RECT_SIZE, this.RECT_SIZE);
+        }
       }
     }
 
-    for (let y = 1; y <= 10; y++) {
-      let currentYear = (year + y);
-      this.ctx.fillStyle = 'black';
-      this.ctx.strokeStyle = 'black';
-      this.ctx.font = '30px Arial';
-
-      let yy = y * 50 + 30;
-      if (currentYear === this.year) {
-        this.ctx.fillText(currentYear.toString(), 0, yy );
-      } else {
-        this.ctx.strokeText(currentYear.toString(), 0, yy );
-      }
-    }
+    requestAnimationFrame(() => this.draw());
   }
 
   public mousemove(event: MouseEvent) {
     this.hoverPoint.x = event.offsetX;
     this.hoverPoint.y = event.offsetY;
+  }
+
+  @HostListener('scroll')
+  public onScroll($event) {
+    debugger;
   }
 }
