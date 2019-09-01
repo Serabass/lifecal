@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/welcome'
+    redirectTo: '/years'
   },
   {
     path: 'years',

@@ -12,6 +12,8 @@ export class Years2Component implements OnInit {
 
   public decades = [];
 
+  public decadeOffset = 0;
+
   constructor() {
   }
 
@@ -32,6 +34,6 @@ export class Years2Component implements OnInit {
   }
 
   public getYear(i: number) {
-    return (this.currentDecade - 50) + (i * 10);
+    return (this.currentDecade - 50) + ((i - this.decadeOffset) * 10);
   }
 }
