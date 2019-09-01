@@ -83,7 +83,7 @@ export class YearsComponent implements OnInit {
           && this.hoverPoint.y > yy && this.hoverPoint.y < yy + this.RECT_SIZE;
 
         if (hovered || isCurrentYear) {
-          this.ctx.fillStyle = 'black';
+          this.ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
           this.ctx.fillRect(offsetX + x * this.RECT_SIZE + this.PADDING,
             y * this.RECT_SIZE + this.PADDING,
             this.RECT_SIZE,

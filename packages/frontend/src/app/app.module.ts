@@ -11,13 +11,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import ru from '@angular/common/locales/ru';
 import {YearsComponent} from './pages/years/years.component';
+import {Years2Component} from './pages/years2/years2.component';
 
 registerLocaleData(ru);
 
 @NgModule({
   declarations: [
     AppComponent,
-    YearsComponent
+    YearsComponent,
+    Years2Component,
   ],
   imports: [
     BrowserModule,

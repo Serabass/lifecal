@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {YearsComponent} from './pages/years/years.component';
+import {Years2Component} from './pages/years2/years2.component';
 
 const routes: Routes = [
   {
@@ -10,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'years',
-    component: YearsComponent
+    component: Years2Component
   },
   {
     path: 'welcome',
