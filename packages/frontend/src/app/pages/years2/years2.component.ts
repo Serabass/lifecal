@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import * as moment from 'moment';
+import {Moment} from 'moment';
 
 @Component({
   selector: 'app-years2',
@@ -8,11 +9,13 @@ import * as moment from 'moment';
 })
 export class Years2Component implements OnInit {
 
-  public  currentYear: number;
+  public currentYear: number;
 
   public decades = [];
 
   public decadeOffset = 0;
+
+  public myBirthday: Date = moment('1991-05-22').toDate();
 
   constructor() {
   }
@@ -35,5 +38,17 @@ export class Years2Component implements OnInit {
 
   public getYear(i: number) {
     return (this.currentDecade - 50) + ((i - this.decadeOffset) * 10);
+  }
+
+  public isLived(year: number) {
+    if (!this.myBirthday) {
+      return false;
+    }
+
+    if (year > moment(this.myBirthday).year() && year <= moment().year()) {
+      return true;
+    }
+
+    return false;
   }
 }

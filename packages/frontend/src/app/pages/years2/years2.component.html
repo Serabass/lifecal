@@ -1,4 +1,13 @@
 <nz-row>
+  <nz-col [nzMd]="3">
+    Ваша дата рождения:
+  </nz-col>
+  <nz-col [nzMd]="4">
+    <nz-date-picker [(ngModel)]="myBirthday"></nz-date-picker>
+  </nz-col>
+</nz-row>
+
+<nz-row>
   <nz-col [nzMd]="12">
     <nz-row *ngFor="let decade of decades; let i = index" class="decade">
       <nz-col class="label" [nzMd]="2">
@@ -9,7 +18,8 @@
              tabindex="1"
              *ngFor="let year of decade"
              [attr.title]="getYear(i) + year"
-             [class.current]="getYear(i) + year === currentYear">
+             [class.current]="getYear(i) + year === currentYear"
+             [class.lived]="isLived(getYear(i) + year)">
               {{ getYear(i) + year }}
         </div>
       </nz-col>
