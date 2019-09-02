@@ -1,4 +1,28 @@
-<canvas #canvas
-        [width]="width"
-        [height]="height"
-        (mousemove)="mousemove($event)"></canvas>
+<nz-row>
+  <nz-col [nzMd]="3">
+    Ваша дата рождения:
+  </nz-col>
+  <nz-col [nzMd]="4">
+    <nz-date-picker [(ngModel)]="myBirthday"></nz-date-picker>
+  </nz-col>
+</nz-row>
+
+<nz-row (mousewheel)="wheel($event)">
+  <nz-col [nzMd]="12">
+    <nz-row *ngFor="let decade of decades; let i = index" class="decade">
+      <nz-col class="label" [nzMd]="2">
+        {{ (currentDecade - 50) + (i * 10) - (decadeOffset * 10) }}
+      </nz-col>
+      <nz-col [nzMd]="22">
+        <div class="year"
+             tabindex="1"
+             *ngFor="let year of decade"
+             [attr.title]="getYear(i) + year"
+             [class.current]="getYear(i) + year === currentYear"
+             [class.lived]="isLived(getYear(i) + year)">
+              {{ getYear(i) + year }}
+        </div>
+      </nz-col>
+    </nz-row>
+  </nz-col>
+</nz-row>

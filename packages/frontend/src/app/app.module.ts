@@ -10,16 +10,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import ru from '@angular/common/locales/ru';
+import {YearComponent} from './pages/year/year.component';
 import {YearsComponent} from './pages/years/years.component';
-import {Years2Component} from './pages/years2/years2.component';
 
 registerLocaleData(ru);
 
 @NgModule({
   declarations: [
     AppComponent,
+    YearComponent,
     YearsComponent,
-    Years2Component,
   ],
   imports: [
     BrowserModule,

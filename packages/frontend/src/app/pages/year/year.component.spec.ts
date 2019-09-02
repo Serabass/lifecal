@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Years2Component } from './years2.component';
+import { YearComponent } from './year.component';
 
-describe('Years2Component', () => {
-  let component: Years2Component;
-  let fixture: ComponentFixture<Years2Component>;
+describe('YearComponent', () => {
+  let component: YearComponent;
+  let fixture: ComponentFixture<YearComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Years2Component ]
+      declarations: [ YearComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Years2Component);
+    fixture = TestBed.createComponent(YearComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

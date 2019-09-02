@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {YearsComponent} from './pages/years/years.component';
-import {Years2Component} from './pages/years2/years2.component';
+import {YearComponent} from './pages/year/year.component';
 
 const routes: Routes = [
   {
@@ -10,8 +10,12 @@ const routes: Routes = [
     redirectTo: '/years'
   },
   {
+    path: 'year/:year',
+    component: YearComponent
+  },
+  {
     path: 'years',
-    component: Years2Component
+    component: YearsComponent
   },
   {
     path: 'welcome',
