@@ -5,22 +5,12 @@ import {YearComponent} from './pages/year/year.component';
 
 const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: '/years'
-  },
-  {
-    path: 'year/:year',
+    path: ':year',
     component: YearComponent
   },
   {
-    path: 'years',
+    path: '',
     component: YearsComponent
-  },
-  {
-    path: 'welcome',
-    loadChildren: () => import('./pages/welcome/welcome.module')
-      .then(m => m.WelcomeModule)
   }
 ];
 

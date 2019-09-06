@@ -17,7 +17,7 @@
         <div class="year"
              tabindex="1"
              *ngFor="let year of decade"
-             [routerLink]="['/year', getYear(i) + year]"
+             [routerLink]="['/', getYear(i) + year]"
              [attr.title]="getRealYear(i, year)"
              [class.current]="getRealYear(i, year) === currentYear"
              [class.lived]="isLived(getRealYear(i, year))">
