@@ -39,6 +39,10 @@ export class YearsComponent implements OnInit {
     return (this.currentDecade - 50) + ((i - this.decadeOffset) * 10);
   }
 
+  public getRealYear(i: number, y: number) {
+    return this.getYear(i) + y;
+  }
+
   public isLived(year: number) {
     if (!this.myBirthday) {
       return false;

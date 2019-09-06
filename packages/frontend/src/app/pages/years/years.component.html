@@ -17,10 +17,11 @@
         <div class="year"
              tabindex="1"
              *ngFor="let year of decade"
-             [attr.title]="getYear(i) + year"
-             [class.current]="getYear(i) + year === currentYear"
-             [class.lived]="isLived(getYear(i) + year)">
-              {{ getYear(i) + year }}
+             [routerLink]="['/year', getYear(i) + year]"
+             [attr.title]="getRealYear(i, year)"
+             [class.current]="getRealYear(i, year) === currentYear"
+             [class.lived]="isLived(getRealYear(i, year))">
+              {{ getRealYear(i, year) }}
         </div>
       </nz-col>
     </nz-row>
