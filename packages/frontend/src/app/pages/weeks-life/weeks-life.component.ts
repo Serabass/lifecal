@@ -113,7 +113,7 @@ export class WeeksLifeComponent implements OnInit {
 
   public wheel(event) {
     event.preventDefault();
-    this.yearOffset += event.deltaY / 100;
+    this.yearOffset += (event.deltaY * 3 / 100);
     this.yearOffset = Math.max(0, this.yearOffset);
     // _.debounce(() => this.fillYears(), 2000);
   }

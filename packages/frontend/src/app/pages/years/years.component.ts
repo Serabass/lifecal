@@ -85,7 +85,7 @@ export class YearsComponent implements OnInit {
 
   public wheel(event) {
     event.preventDefault();
-    this.decadeOffset -= event.deltaY / 100;
+    this.decadeOffset -= (event.deltaY / 100);
   }
 
   public selectYear(i: number, year: number) {
