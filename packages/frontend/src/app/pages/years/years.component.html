@@ -5,6 +5,9 @@
   <nz-col [nzMd]="4">
     <nz-date-picker [(ngModel)]="myBirthday"></nz-date-picker>
   </nz-col>
+  <nz-col [nzMd]="4">
+    {{ myBirthday | weekday }}
+  </nz-col>
 </nz-row>
 
 <nz-row (mousewheel)="wheel($event)">

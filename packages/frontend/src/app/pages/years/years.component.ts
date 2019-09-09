@@ -115,4 +115,8 @@ export class YearsComponent implements OnInit {
       return `В ${this.selectedYear} вам было`;
     }
   }
+
+  public get bdWeekday() {
+    return moment(this.myBirthday).weekday();
+  }
 }

@@ -5,6 +5,9 @@
   <nz-col [nzMd]="4">
     <nz-date-picker [(ngModel)]="myBirthday"></nz-date-picker>
   </nz-col>
+  <nz-col [nzMd]="4">
+    {{ myBirthday | weekday }}
+  </nz-col>
 </nz-row>
 
 <nz-row>
@@ -20,14 +23,15 @@
       </thead>
 
       <tbody>
-      <tr *ngFor="let year of years; let idx = $index">
-        <td class="title">
-          {{ idx }}
+      <tr *ngFor="let year of years; let idx = index">
+        <td class="title" align="right">
+          {{ idx + 1 }}
         </td>
-        <td *ngFor="let i of weeksHeader">
+        <td *ngFor="let i of weeksHeader"
+            nz-popover
+            [nzContent]="getContent(idx, i)" nzTrigger="click">
           &nbsp;
         </td>
-
       </tr>
       </tbody>
     </table>
