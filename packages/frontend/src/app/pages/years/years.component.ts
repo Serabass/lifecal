@@ -14,12 +14,23 @@ export class YearsComponent implements OnInit {
 
   public decadeOffset = 0;
 
-  public myBirthday: Date = moment('1991-05-22').toDate();
+  public get myBirthday(): Date {
+    let bd = localStorage.getItem('birthday');
+
+    if (!bd) {
+      return moment('1991-05-22').toDate();
+    }
+  }
+
+  public set myBirthday(val: Date) {
+    localStorage.setItem('birthday', moment(val).format('YYYY-MM-DD'));
+  }
 
   constructor() {
   }
 
   ngOnInit() {
+
     this.currentYear = moment().year();
 
     for (let dec = 0; dec < 10; dec++) {
@@ -48,7 +59,7 @@ export class YearsComponent implements OnInit {
       return false;
     }
 
-    if (year > moment(this.myBirthday).year() && year <= moment().year()) {
+    if (year >= moment(this.myBirthday).year() && year <= moment().year()) {
       return true;
     }
 

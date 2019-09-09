@@ -85,7 +85,8 @@
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
-    "prefer-const": false
+    "prefer-const": false,
+    "variable-name": false
   },
   "rulesDirectory": [
     "codelyzer"
