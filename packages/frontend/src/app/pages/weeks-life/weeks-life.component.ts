@@ -61,7 +61,7 @@ export class WeeksLifeComponent implements OnInit {
       this.weeksHeader.push(week);
     }
 
-    for (let year = 0; year < 100; year++) {
+    for (let year = 0; year <= 100; year++) {
       let weeks = [];
 
       for (let week = 0; week <= 52; week++) {
