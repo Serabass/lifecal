@@ -106,6 +106,42 @@
                 </nz-card>
               </nz-col>
             </nz-row>
+            <nz-row>
+              <nz-col>
+                <nz-card [nzTitle]="'В ' + selectedYear + ' вам будет'">
+                  <nz-row>
+                    <nz-col>
+                      {{ w(selectedYear, 'years') | plural : 'years'}}
+                    </nz-col>
+                  </nz-row>
+                  <nz-row>
+                    <nz-col>
+                      {{ w(selectedYear, 'months') | plural : 'months'}}
+                    </nz-col>
+                  </nz-row>
+                  <nz-row>
+                    <nz-col>
+                      {{ w(selectedYear, 'days') | plural : 'days'}}
+                    </nz-col>
+                  </nz-row>
+                  <nz-row>
+                    <nz-col>
+                      {{ w(selectedYear, 'hours') | plural : 'hours'}}
+                    </nz-col>
+                  </nz-row>
+                  <nz-row>
+                    <nz-col>
+                      {{ w(selectedYear, 'minutes') | plural : 'minutes'}}
+                    </nz-col>
+                  </nz-row>
+                  <nz-row>
+                    <nz-col [nzMd]="12">
+                      {{ w(selectedYear, 'seconds') | plural : 'seconds'}}
+                    </nz-col>
+                  </nz-row>
+                </nz-card>
+              </nz-col>
+            </nz-row>
           </nz-col>
         </nz-row>
       </nz-tab>

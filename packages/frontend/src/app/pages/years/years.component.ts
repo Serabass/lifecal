@@ -93,6 +93,10 @@ export class YearsComponent implements OnInit {
     return Math.abs(moment().diff(`${to}-01-01`, d));
   }
 
+  public w(to: any, d: Diff) {
+    return Math.abs(moment(this.myBirthday).diff(`${to}-01-01`, d));
+  }
+
   public get leftTitle() {
     if (this.selectedYear > this.currentYear) {
       return `До ${this.selectedYear} осталось`;
