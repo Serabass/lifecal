@@ -97,8 +97,9 @@
                       {{ diff(selectedYear, 'minutes') | plural : 'minutes'}}
                     </nz-col>
                   </nz-row>
-                  <nz-row>
-                    <nz-col>
+                  <nz-row class="dontsee" nz-popover
+                          nzContent="Советую сюда не смотреть" nzPlacement="left">
+                    <nz-col [nzMd]="12">
                       {{ diff(selectedYear, 'seconds') | plural : 'seconds'}}
                     </nz-col>
                   </nz-row>
