@@ -36,8 +36,7 @@
           </nz-col>
           <nz-col [nzMd]="9">
             <nz-row>
-              <nz-col>
-
+              <nz-col [nzMd]="10">
                 <nz-card nzTitle="Вы прожили">
                   <nz-row>
                     <nz-col>
@@ -71,9 +70,7 @@
                   </nz-row>
                 </nz-card>
               </nz-col>
-            </nz-row>
-            <nz-row *ngIf="selectedYear !== currentYear">
-              <nz-col>
+              <nz-col [nzMd]="14">
                 <nz-card [nzTitle]="leftTitle">
                   <nz-row>
                     <nz-col>
@@ -107,6 +104,10 @@
                     </nz-col>
                   </nz-row>
                 </nz-card>
+              </nz-col>
+            </nz-row>
+            <nz-row *ngIf="selectedYear !== currentYear">
+              <nz-col>
               </nz-col>
             </nz-row>
             <nz-row>
