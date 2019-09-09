@@ -11,7 +11,7 @@ export class PluralPipe implements PipeTransform {
   }
 
   private plural(value: any, {zero, one, few, many}: any) {
-    if (value % 100 === 11) {
+    if (value % 100 >= 11 && value % 100 <= 19) {
       return `${value.toLocaleString('en-US')} ${many}`;
     }
 
