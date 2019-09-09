@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
-import * as _ from 'underscore';
 
 /**
  * Разбивка 100 лет по неделям
