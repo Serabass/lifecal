@@ -1,4 +1,5 @@
 table
+  font-size: 12px
   width: 100%
   th, td
     width: 25px
@@ -6,6 +7,8 @@ table
   td
     cursor: pointer
     transition: background-color 300ms ease-out
+    &.lived
+      background-color: rgba(0, 255, 0, 0.4)
     &:hover
       background-color: rgba(0, 0, 0, 0.2)
     &.title
@@ -13,5 +16,3 @@ table
         background-color: transparent
       &.bold
         font-weight: bold
-    &.lived
-      background-color: rgba(0, 255, 0, 0.4)
