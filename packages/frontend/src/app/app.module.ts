@@ -14,6 +14,7 @@ import {YearComponent} from './pages/year/year.component';
 import {YearsComponent} from './pages/years/years.component';
 import {PluralPipe} from './pipes/plural.pipe';
 import {AboutComponent} from './pages/about/about.component';
+import {WeeksLifeComponent} from './pages/weeks-life/weeks-life.component';
 
 registerLocaleData(ru);
 
@@ -23,7 +24,7 @@ registerLocaleData(ru);
     YearComponent,
     YearsComponent,
     AboutComponent,
-
+    WeeksLifeComponent,
     PluralPipe,
   ],
   imports: [
