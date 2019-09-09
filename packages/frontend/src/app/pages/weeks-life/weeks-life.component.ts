@@ -64,4 +64,16 @@ export class WeeksLifeComponent implements OnInit {
   public get bdWeekday() {
     return moment(this.myBirthday).weekday();
   }
+
+  public addYears(years: number) {
+    for (let i = 0; i < years; i++) {
+      let weeks = [];
+
+      for (let week = 0; week <= 52; week++) {
+        weeks.push(week);
+      }
+
+      this.years.push(weeks);
+    }
+  }
 }

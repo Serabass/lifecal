@@ -8,5 +8,8 @@ table
     transition: background-color 300ms ease-out
     &:hover
       background-color: rgba(0, 0, 0, 0.2)
-    &.title:hover
-      background-color: transparent
+    &.title
+      &:hover
+        background-color: transparent
+      &.bold
+        font-weight: bold

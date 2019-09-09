@@ -24,7 +24,7 @@
 
       <tbody>
       <tr *ngFor="let year of years; let idx = index">
-        <td class="title" align="right">
+        <td class="title" align="right" [class.bold]="(idx + 1) % 10 === 0">
           {{ idx + 1 }}
         </td>
         <td *ngFor="let i of weeksHeader"
@@ -35,12 +35,13 @@
       </tr>
       </tbody>
     </table>
-    <div class="year" *ngFor="let year of years; let i = $index">
-      <div class="title">
-        {{ i }}
-      </div>
-      <div class="week" *ngFor="let week of year">
-      </div>
-    </div>
+
+    <nz-row>
+      <nz-col>
+        <button nz-button (click)="addYears(10)">
+          Разблокировать ещё 10 лет
+        </button>
+      </nz-col>
+    </nz-row>
   </nz-col>
 </nz-row>
