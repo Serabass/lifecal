@@ -12,6 +12,7 @@ import { registerLocaleData } from '@angular/common';
 import ru from '@angular/common/locales/ru';
 import {YearComponent} from './pages/year/year.component';
 import {YearsComponent} from './pages/years/years.component';
+import {PluralPipe} from './pipes/plural.pipe';
 
 registerLocaleData(ru);
 
@@ -20,6 +21,8 @@ registerLocaleData(ru);
     AppComponent,
     YearComponent,
     YearsComponent,
+
+    PluralPipe,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ registerLocaleData(ru);
     HttpClientModule,
     BrowserAnimationsModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: ru_RU }],
+  providers: [{ provide: NZ_I18N, useValue: ru_RU }, PluralPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

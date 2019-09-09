@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import * as moment from 'moment';
+import Diff = moment.unitOfTime.Diff;
 
 @Component({
   selector: 'app-years',
@@ -9,28 +10,38 @@ import * as moment from 'moment';
 export class YearsComponent implements OnInit {
 
   public currentYear: number;
+  public selectedYear: number;
 
   public decades = [];
 
   public decadeOffset = 0;
 
+  private _myBd: Date;
+
   public get myBirthday(): Date {
+    if (this._myBd) {
+      return this._myBd;
+    }
     let bd = localStorage.getItem('birthday');
 
     if (!bd) {
-      return moment('1991-05-22').toDate();
+      let value = moment('1991-05-22').format('YYYY-MM-DD');
+      localStorage.setItem('birthday', value);
+      return moment(value).toDate();
     }
+
+    return this._myBd = moment(bd).toDate();
   }
 
   public set myBirthday(val: Date) {
     localStorage.setItem('birthday', moment(val).format('YYYY-MM-DD'));
+    this._myBd = val;
   }
 
   constructor() {
   }
 
   ngOnInit() {
-
     this.currentYear = moment().year();
 
     for (let dec = 0; dec < 10; dec++) {
@@ -69,5 +80,13 @@ export class YearsComponent implements OnInit {
   public wheel(event) {
     event.preventDefault();
     this.decadeOffset -= event.deltaY / 100;
+  }
+
+  public selectYear(i: number, year: number) {
+    this.selectedYear = this.getYear(i) + year;
+  }
+
+  public diff(to: any, d: Diff) {
+    return Math.abs(moment().diff(`${to}-01-01`, d));
   }
 }

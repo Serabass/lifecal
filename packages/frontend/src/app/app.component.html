@@ -8,6 +8,22 @@
        data-recalc-dims="1">
 </a>
 
+<div class="video-embed">
+  <img src="https://i.ytimg.com/vi/KGfFunFV2Ck/maxresdefault.jpg" alt="" width="200" (click)="showVideoModal = true" />
+  <nz-modal [(nzVisible)]="showVideoModal"
+            nzTitle="КАЛЕНДАРЬ ЖИЗНИ - ТОПЛЕС"
+            (nzOnCancel)="showVideoModal = false"
+            [nzFooter]="[]" nzWidth="1316px">
+    <iframe width="1269"
+            height="480"
+            src="https://www.youtube.com/embed/KGfFunFV2Ck"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    <div *nzModalFooter></div>
+  </nz-modal>
+</div>
+
 <nz-layout class="app-layout">
   <nz-sider class="menu-sidebar"
             nzCollapsible
