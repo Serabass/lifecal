@@ -94,7 +94,8 @@ export class YearsComponent implements OnInit {
   }
 
   public w(to: any, d: Diff) {
-    return Math.abs(moment(this.myBirthday).diff(`${to}-01-01`, d));
+    let bd = moment(this.myBirthday);
+    return Math.abs(bd.diff(`${to}-01-01`, d, false));
   }
 
   public get leftTitle() {
@@ -103,6 +104,15 @@ export class YearsComponent implements OnInit {
     }
     if (this.selectedYear < this.currentYear) {
       return `С ${this.selectedYear} прошло`;
+    }
+  }
+
+  public get wTitle() {
+    if (this.selectedYear > this.currentYear) {
+      return `В ${this.selectedYear} вам будет`;
+    }
+    if (this.selectedYear < this.currentYear) {
+      return `В ${this.selectedYear} вам было`;
     }
   }
 }
