@@ -15,9 +15,9 @@
     <table border="1">
       <thead>
         <tr>
-          <th class="title"></th>
+          <th></th>
           <th *ngFor="let i of weeksHeader">
-            {{ i | pad : 2 : '0' }}
+            {{ i % 10 === 0 || i === 52 ? (i | pad : 2 : '0') : '' }}
           </th>
         </tr>
       </thead>
