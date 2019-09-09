@@ -92,4 +92,13 @@ export class YearsComponent implements OnInit {
   public diff(to: any, d: Diff) {
     return Math.abs(moment().diff(`${to}-01-01`, d));
   }
+
+  public get leftTitle() {
+    if (this.selectedYear > this.currentYear) {
+      return `До ${this.selectedYear} осталось`;
+    }
+    if (this.selectedYear < this.currentYear) {
+      return `С ${this.selectedYear} прошло`;
+    }
+  }
 }
