@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  isCollapsed = false;
+  /**
+   * Прячем сайдбар
+   */
+  public isCollapsed = false;
 
+  /**
+   * Отображаем модалку с выпуском
+   */
   public showVideoModal = false;
 }

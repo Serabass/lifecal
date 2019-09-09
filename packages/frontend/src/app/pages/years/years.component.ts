@@ -41,6 +41,9 @@ export class YearsComponent implements OnInit {
   constructor(public app: ApplicationRef) {
   }
 
+  /**
+   * Инициализация компонента
+   */
   ngOnInit() {
     this.currentYear = moment().year();
     this.selectedYear = moment().add(1, 'year').year();

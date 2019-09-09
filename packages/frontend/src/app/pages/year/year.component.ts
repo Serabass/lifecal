@@ -38,6 +38,9 @@ export class YearComponent implements OnInit {
   constructor() {
   }
 
+  /**
+   * Инициализация компонента
+   */
   ngOnInit() {
     this.ctx = this.canvas.nativeElement.getContext('2d');
     this.year = moment().year();
