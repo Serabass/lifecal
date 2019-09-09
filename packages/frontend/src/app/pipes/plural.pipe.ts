@@ -15,7 +15,7 @@ export class PluralPipe implements PipeTransform {
       return `${value.toLocaleString('en-US')} ${many}`;
     }
 
-    if (value === 0) {
+    if (value % 10 === 0) {
       return `${value.toLocaleString('en-US')} ${zero}`;
     }
 

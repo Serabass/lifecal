@@ -24,6 +24,7 @@
                      (click)="selectYear(i, year)"
                      [attr.title]="getRealYear(i, year)"
                      [class.current]="getRealYear(i, year) === currentYear"
+                     [class.selected]="getRealYear(i, year) === selectedYear"
                      [class.lived]="isLived(getRealYear(i, year))">
                   {{ getRealYear(i, year) }}
                 </div>

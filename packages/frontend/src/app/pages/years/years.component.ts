@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ApplicationRef, Component, OnInit} from '@angular/core';
 import * as moment from 'moment';
 import Diff = moment.unitOfTime.Diff;
 
@@ -38,11 +38,12 @@ export class YearsComponent implements OnInit {
     this._myBd = val;
   }
 
-  constructor() {
+  constructor(public app: ApplicationRef) {
   }
 
   ngOnInit() {
     this.currentYear = moment().year();
+    this.selectedYear = moment().add(1, 'year').year();
 
     for (let dec = 0; dec < 10; dec++) {
       let decade = [];
@@ -51,6 +52,8 @@ export class YearsComponent implements OnInit {
       }
       this.decades.push(decade);
     }
+
+    setInterval(() => this.app.tick(), 1000);
   }
 
   public get currentDecade() {
