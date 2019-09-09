@@ -13,6 +13,7 @@ import ru from '@angular/common/locales/ru';
 import {YearComponent} from './pages/year/year.component';
 import {YearsComponent} from './pages/years/years.component';
 import {PluralPipe} from './pipes/plural.pipe';
+import {AboutComponent} from './pages/about/about.component';
 
 registerLocaleData(ru);
 
@@ -21,6 +22,7 @@ registerLocaleData(ru);
     AppComponent,
     YearComponent,
     YearsComponent,
+    AboutComponent,
 
     PluralPipe,
   ],
