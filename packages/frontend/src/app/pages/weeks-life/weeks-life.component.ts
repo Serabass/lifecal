@@ -115,6 +115,6 @@ export class WeeksLifeComponent implements OnInit {
     event.preventDefault();
     this.yearOffset += event.deltaY / 100;
     this.yearOffset = Math.max(0, this.yearOffset);
-    _.debounce(() => this.fillYears(), 1000);
+    // _.debounce(() => this.fillYears(), 2000);
   }
 }
