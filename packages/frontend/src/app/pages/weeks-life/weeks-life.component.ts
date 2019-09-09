@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import * as _ from 'underscore';
 
 /**
  * Разбивка 100 лет по неделям
@@ -10,6 +11,8 @@ import * as moment from 'moment';
   styleUrls: ['./weeks-life.component.sass']
 })
 export class WeeksLifeComponent implements OnInit {
+
+  public yearOffset = 0;
 
   /**
    * День моего рождения
@@ -61,7 +64,12 @@ export class WeeksLifeComponent implements OnInit {
       this.weeksHeader.push(week);
     }
 
-    for (let year = 0; year <= 100; year++) {
+    this.fillYears();
+  }
+
+  public fillYears() {
+    this.years = [];
+    for (let year = 0; year <=  20; year++) {
       let weeks = [];
 
       for (let week = 0; week <= 52; week++) {
@@ -101,5 +109,12 @@ export class WeeksLifeComponent implements OnInit {
 
       this.years.push(weeks);
     }
+  }
+
+  public wheel(event) {
+    event.preventDefault();
+    this.yearOffset += event.deltaY / 100;
+    this.yearOffset = Math.max(0, this.yearOffset);
+    _.debounce(() => this.fillYears(), 1000);
   }
 }

@@ -10,7 +10,7 @@
   </nz-col>
 </nz-row>
 
-<nz-row>
+<nz-row (mousewheel)="wheel($event)">
   <nz-col>
     <table border="1">
       <thead>
@@ -24,15 +24,16 @@
 
       <tbody>
       <tr *ngFor="let year of years; let idx = index">
-        <td class="title" align="right" [class.bold]="(idx) % 10 === 0">
-          {{ idx | pad : 3 : '0' }}
+        <td class="title"
+            align="right"
+            [class.bold]="(yearOffset + idx) % 10 === 0">
+          {{ yearOffset + idx | pad : 3 : '0' }}
         </td>
         <td *ngFor="let i of weeksHeader"
             nz-popover
-            [nzContent]="getWeekDate(idx, i)"
+            [nzContent]="getWeekDate(yearOffset + idx, i)"
             nzTrigger="click"
-
-            [class.lived]="isLived(idx, i)">
+            [class.lived]="isLived(yearOffset + idx, i)">
           &nbsp;
         </td>
       </tr>
