@@ -2,7 +2,7 @@
   <nz-col [nzMd]="3">
     Ваша дата рождения:
   </nz-col>
-  <nz-col [nzMd]="4">
+  <nz-col [nzMd]="3">
     <nz-date-picker [(ngModel)]="myBirthday"></nz-date-picker>
   </nz-col>
   <nz-col [nzMd]="4">
@@ -100,9 +100,9 @@
                       {{ diff(selectedYear, 'minutes') | plural : 'minutes'}}
                     </nz-col>
                   </nz-row>
-                  <nz-row class="dontsee" nz-popover
-                          nzContent="Советую сюда не смотреть" nzPlacement="left">
-                    <nz-col [nzMd]="12">
+                  <nz-row class="dontsee">
+                    <nz-col [nzMd]="12" nz-popover
+                            nzContent="Советую сюда не смотреть" nzPlacement="bottom">
                       {{ diff(selectedYear, 'seconds') | plural : 'seconds'}}
                     </nz-col>
                   </nz-row>
