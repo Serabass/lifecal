@@ -75,11 +75,15 @@ export class WeeksLifeComponent implements OnInit {
   /**
    * Текстовка для всплывашки на ячейке
    */
-  public getContent(year, week) {
+  public getWeekDate(year, week) {
     let d = moment(this.myBirthday);
     d = d.add(year, 'year');
     d = d.add(week, 'week');
     return d.format('YYYY-MM-DD');
+  }
+
+  public isLived(year, week) {
+    return this.getWeekDate(year, week) <= moment().format('YYYY-MM-DD');
   }
 
   /**

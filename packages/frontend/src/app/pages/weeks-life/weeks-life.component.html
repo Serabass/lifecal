@@ -24,12 +24,15 @@
 
       <tbody>
       <tr *ngFor="let year of years; let idx = index">
-        <td class="title" align="right" [class.bold]="(idx + 1) % 10 === 0">
-          {{ idx + 1 }}
+        <td class="title" align="right" [class.bold]="(idx) % 10 === 0">
+          {{ idx }}
         </td>
         <td *ngFor="let i of weeksHeader"
             nz-popover
-            [nzContent]="getContent(idx, i)" nzTrigger="click">
+            [nzContent]="getWeekDate(idx, i)"
+            nzTrigger="click"
+
+            [class.lived]="isLived(idx, i)">
           &nbsp;
         </td>
       </tr>
