@@ -32,6 +32,12 @@
             [(nzCollapsed)]="isCollapsed"
             [nzTrigger]="null">
     <div class="sidebar-logo">
+    <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+        <i class="trigger"
+           nz-icon
+           [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+        ></i>
+    </span>
       <a routerLink="/">
         <h1>Календарь жизни</h1>
       </a>
@@ -55,17 +61,6 @@
     </ul>
   </nz-sider>
   <nz-layout>
-    <nz-header>
-      <div class="app-header">
-        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-            <i class="trigger"
-               nz-icon
-               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-            ></i>
-        </span>
-
-      </div>
-    </nz-header>
     <nz-content>
       <nz-card [nzBordered]="false">
         <router-outlet></router-outlet>

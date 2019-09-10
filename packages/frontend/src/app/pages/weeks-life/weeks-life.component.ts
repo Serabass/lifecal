@@ -68,7 +68,7 @@ export class WeeksLifeComponent implements OnInit {
 
   public fillYears() {
     this.years = [];
-    for (let year = 0; year <=  20; year++) {
+    for (let year = 0; year <=  30; year++) {
       let weeks = [];
 
       for (let week = 0; week <= 52; week++) {
