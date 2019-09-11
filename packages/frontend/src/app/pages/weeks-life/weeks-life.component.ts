@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import {StorageService} from '../../services/storage.service';
 
 /**
  * Разбивка 100 лет по неделям
@@ -11,35 +12,10 @@ import * as moment from 'moment';
 })
 export class WeeksLifeComponent implements OnInit {
 
+  /**
+   * Сдвиг по годам
+   */
   public yearOffset = 0;
-
-  /**
-   * День моего рождения
-   */
-  private _myBd: Date;
-
-  /**
-   * День моего рождения
-   */
-  public get myBirthday(): Date {
-    if (this._myBd) {
-      return this._myBd;
-    }
-    let bd = localStorage.getItem('birthday');
-
-    if (!bd) {
-      let value = moment('1991-05-22').format('YYYY-MM-DD');
-      localStorage.setItem('birthday', value);
-      return moment(value).toDate();
-    }
-
-    return this._myBd = moment(bd).toDate();
-  }
-
-  public set myBirthday(val: Date) {
-    localStorage.setItem('birthday', moment(val).format('YYYY-MM-DD'));
-    this._myBd = val;
-  }
 
   /**
    * Массив с неделями (всегда 52)
@@ -53,7 +29,7 @@ export class WeeksLifeComponent implements OnInit {
 
   ];
 
-  constructor() { }
+  constructor(public storage: StorageService) { }
 
   /**
    * Инициализация компонента
@@ -66,6 +42,9 @@ export class WeeksLifeComponent implements OnInit {
     this.fillYears();
   }
 
+  /**
+   * Заполнить 30 лет
+   */
   public fillYears() {
     this.years = [];
     for (let year = 0; year <=  30; year++) {
@@ -83,12 +62,17 @@ export class WeeksLifeComponent implements OnInit {
    * Текстовка для всплывашки на ячейке
    */
   public getWeekDate(year, week) {
-    let d = moment(this.myBirthday);
+    let d = moment(this.storage.myBirthday);
     d = d.add(year, 'year');
     d = d.add(week, 'week');
     return d.format('YYYY-MM-DD');
   }
 
+  /**
+   * Проверяем, прошла ли определённая неделя
+   * @param year Год
+   * @param week Неделя
+   */
   public isLived(year, week) {
     return this.getWeekDate(year, week) <= moment().format('YYYY-MM-DD');
   }
@@ -110,6 +94,11 @@ export class WeeksLifeComponent implements OnInit {
     }
   }
 
+  /**
+   * Событие скролла
+   *
+   * @param event Событие
+   */
   public wheel(event) {
     event.preventDefault();
     this.yearOffset += (event.deltaY * 3 / 100);

@@ -1,0 +1,13 @@
+<nz-card>
+  <nz-row>
+    <nz-col [nzMd]="3">
+      Ваша дата рождения:
+    </nz-col>
+    <nz-col [nzMd]="3">
+      <nz-date-picker [(ngModel)]="storage.myBirthday"></nz-date-picker>
+    </nz-col>
+    <nz-col [nzMd]="4">
+      {{ myBirthday | weekday }}
+    </nz-col>
+  </nz-row>
+</nz-card>

@@ -1,12 +1,6 @@
 <nz-row>
-  <nz-col [nzMd]="3">
-    Ваша дата рождения:
-  </nz-col>
-  <nz-col [nzMd]="3">
-    <nz-date-picker [(ngModel)]="myBirthday"></nz-date-picker>
-  </nz-col>
-  <nz-col [nzMd]="4">
-    {{ myBirthday | weekday }}
+  <nz-col>
+    <app-birthday-selector></app-birthday-selector>
   </nz-col>
 </nz-row>
 
@@ -34,115 +28,26 @@
               </nz-col>
             </nz-row>
           </nz-col>
-          <nz-col [nzMd]="9">
+          <nz-col [nzMd]="14">
             <nz-row>
-              <nz-col [nzMd]="10">
+              <nz-col [nzMd]="12">
                 <nz-card nzTitle="Вы прожили">
-                  <nz-row>
-                    <nz-col>
-                      {{ diff(myBirthday, 'years') | plural : 'years'}}
-                    </nz-col>
-                  </nz-row>
-                  <nz-row>
-                    <nz-col>
-                      {{ diff(myBirthday, 'months') | plural : 'months'}}
-                    </nz-col>
-                  </nz-row>
-                  <nz-row>
-                    <nz-col>
-                      {{ diff(myBirthday, 'days') | plural : 'days'}}
-                    </nz-col>
-                  </nz-row>
-                  <nz-row>
-                    <nz-col>
-                      {{ diff(myBirthday, 'hours') | plural : 'hours'}}
-                    </nz-col>
-                  </nz-row>
-                  <nz-row>
-                    <nz-col>
-                      {{ diff(myBirthday, 'minutes') | plural : 'minutes'}}
-                    </nz-col>
-                  </nz-row>
-                  <nz-row>
-                    <nz-col>
-                      {{ diff(myBirthday, 'seconds') | plural : 'seconds'}}
-                    </nz-col>
-                  </nz-row>
+                  <app-diffs [offsetDate]="storage.myBirthday"
+                             [selectedYear]="currentYear"></app-diffs>
                 </nz-card>
               </nz-col>
-              <nz-col [nzMd]="14">
+              <nz-col [nzMd]="12">
                 <nz-card [nzTitle]="leftTitle">
-                  <nz-row>
-                    <nz-col>
-                      {{ diff(selectedYear, 'years') | plural : 'years'}}
-                    </nz-col>
-                  </nz-row>
-                  <nz-row>
-                    <nz-col>
-                      {{ diff(selectedYear, 'months') | plural : 'months'}}
-                    </nz-col>
-                  </nz-row>
-                  <nz-row>
-                    <nz-col>
-                      {{ diff(selectedYear, 'days') | plural : 'days'}}
-                    </nz-col>
-                  </nz-row>
-                  <nz-row>
-                    <nz-col>
-                      {{ diff(selectedYear, 'hours') | plural : 'hours'}}
-                    </nz-col>
-                  </nz-row>
-                  <nz-row>
-                    <nz-col>
-                      {{ diff(selectedYear, 'minutes') | plural : 'minutes'}}
-                    </nz-col>
-                  </nz-row>
-                  <nz-row class="dontsee">
-                    <nz-col [nzMd]="12" nz-popover
-                            nzContent="Советую сюда не смотреть" nzPlacement="bottom">
-                      {{ diff(selectedYear, 'seconds') | plural : 'seconds'}}
-                    </nz-col>
-                  </nz-row>
+                  <app-diffs [offsetDate]="now"
+                             [selectedYear]="selectedYear"
+                             [hideSeconds]="true"></app-diffs>
                 </nz-card>
-              </nz-col>
-            </nz-row>
-            <nz-row *ngIf="selectedYear !== currentYear">
-              <nz-col>
               </nz-col>
             </nz-row>
             <nz-row>
               <nz-col>
                 <nz-card [nzTitle]="wTitle">
-                  <nz-row>
-                    <nz-col>
-                      {{ w(selectedYear, 'years') | plural : 'years'}}
-                    </nz-col>
-                  </nz-row>
-                  <nz-row>
-                    <nz-col>
-                      {{ w(selectedYear, 'months') | plural : 'months'}}
-                    </nz-col>
-                  </nz-row>
-                  <nz-row>
-                    <nz-col>
-                      {{ w(selectedYear, 'days') | plural : 'days'}}
-                    </nz-col>
-                  </nz-row>
-                  <nz-row>
-                    <nz-col>
-                      {{ w(selectedYear, 'hours') | plural : 'hours'}}
-                    </nz-col>
-                  </nz-row>
-                  <nz-row>
-                    <nz-col>
-                      {{ w(selectedYear, 'minutes') | plural : 'minutes'}}
-                    </nz-col>
-                  </nz-row>
-                  <nz-row>
-                    <nz-col [nzMd]="12">
-                      {{ w(selectedYear, 'seconds') | plural : 'seconds'}}
-                    </nz-col>
-                  </nz-row>
+                  <app-diffs [selectedYear]="selectedYear"></app-diffs>
                 </nz-card>
               </nz-col>
             </nz-row>

@@ -1,0 +1,36 @@
+<nz-row>
+  <nz-col>
+    {{ w(selectedYear, 'years') | plural : 'years'}}
+  </nz-col>
+</nz-row>
+<nz-row>
+  <nz-col>
+    {{ w(selectedYear, 'months') | plural : 'months'}}
+  </nz-col>
+</nz-row>
+<nz-row>
+  <nz-col>
+    {{ w(selectedYear, 'days') | plural : 'days'}}
+  </nz-col>
+</nz-row>
+<nz-row>
+  <nz-col>
+    {{ w(selectedYear, 'hours') | plural : 'hours'}}
+  </nz-col>
+</nz-row>
+<nz-row>
+  <nz-col>
+    {{ w(selectedYear, 'minutes') | plural : 'minutes'}}
+  </nz-col>
+</nz-row>
+<nz-row *ngIf="!hideSeconds">
+  <nz-col [nzMd]="12">
+    {{ w(selectedYear, 'seconds') | plural : 'seconds'}}
+  </nz-col>
+</nz-row>
+<nz-row class="dont-see" *ngIf="hideSeconds">
+  <nz-col [nzMd]="12" nz-popover
+          nzContent="Советую сюда не смотреть" nzPlacement="bottom">
+    {{ diff(selectedYear, 'seconds') | plural : 'seconds'}}
+  </nz-col>
+</nz-row>

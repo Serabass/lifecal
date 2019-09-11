@@ -17,6 +17,8 @@ import {AboutComponent} from './pages/about/about.component';
 import {WeeksLifeComponent} from './pages/weeks-life/weeks-life.component';
 import {WeekdayPipe} from './pipes/weekday.pipe';
 import {PadPipe} from './pipes/pad.pipe';
+import {DiffsComponent} from './components/diffs/diffs.component';
+import {BirthdaySelectorComponent} from './components/birthday-selector/birthday-selector.component';
 
 registerLocaleData(ru);
 
@@ -27,6 +29,8 @@ registerLocaleData(ru);
     YearsComponent,
     AboutComponent,
     WeeksLifeComponent,
+    BirthdaySelectorComponent,
+    DiffsComponent,
     PluralPipe,
     WeekdayPipe,
     PadPipe,

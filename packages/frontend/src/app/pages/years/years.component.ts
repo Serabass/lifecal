@@ -1,6 +1,7 @@
 import {ApplicationRef, Component, OnInit} from '@angular/core';
 import * as moment from 'moment';
 import Diff = moment.unitOfTime.Diff;
+import {StorageService} from '../../services/storage.service';
 
 @Component({
   selector: 'app-years',
@@ -9,36 +10,27 @@ import Diff = moment.unitOfTime.Diff;
 })
 export class YearsComponent implements OnInit {
 
+  /**
+   * Текущий год
+   */
   public currentYear: number;
+
+  /**
+   * Выбранный в таблице год
+   */
   public selectedYear: number;
 
+  /**
+   * Декады (десятилетки)
+   */
   public decades = [];
 
+  /**
+   * Сдвиг по декадам
+   */
   public decadeOffset = 0;
 
-  private _myBd: Date;
-
-  public get myBirthday(): Date {
-    if (this._myBd) {
-      return this._myBd;
-    }
-    let bd = localStorage.getItem('birthday');
-
-    if (!bd) {
-      let value = moment('1991-05-22').format('YYYY-MM-DD');
-      localStorage.setItem('birthday', value);
-      return moment(value).toDate();
-    }
-
-    return this._myBd = moment(bd).toDate();
-  }
-
-  public set myBirthday(val: Date) {
-    localStorage.setItem('birthday', moment(val).format('YYYY-MM-DD'));
-    this._myBd = val;
-  }
-
-  constructor(public app: ApplicationRef) {
+  constructor(public app: ApplicationRef, public storage: StorageService) {
   }
 
   /**
@@ -59,6 +51,9 @@ export class YearsComponent implements OnInit {
     setInterval(() => this.app.tick(), 1000);
   }
 
+  /**
+   * Первый год текущей декады. 2017 -> 2010
+   */
   public get currentDecade() {
     return this.currentYear - (this.currentYear % 10);
   }
@@ -72,11 +67,11 @@ export class YearsComponent implements OnInit {
   }
 
   public isLived(year: number) {
-    if (!this.myBirthday) {
+    if (!this.storage.myBirthday) {
       return false;
     }
 
-    if (year >= moment(this.myBirthday).year() && year <= moment().year()) {
+    if (year >= moment(this.storage.myBirthday).year() && year <= moment().year()) {
       return true;
     }
 
@@ -97,7 +92,7 @@ export class YearsComponent implements OnInit {
   }
 
   public w(to: any, d: Diff) {
-    let bd = moment(this.myBirthday);
+    let bd = moment(this.storage.myBirthday);
     return Math.abs(bd.diff(`${to}-01-01`, d, false));
   }
 
@@ -119,7 +114,7 @@ export class YearsComponent implements OnInit {
     }
   }
 
-  public get bdWeekday() {
-    return moment(this.myBirthday).weekday();
+  public get now() {
+    return moment();
   }
 }
